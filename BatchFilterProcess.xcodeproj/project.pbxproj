@@ -13,9 +13,13 @@
 		35FF28FD21887B020001C286 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35FF28FB21887B020001C286 /* Main.storyboard */; };
 		35FF290021887B020001C286 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FF28FF21887B020001C286 /* main.m */; };
 		35FF290921887C5E0001C286 /* CustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FF290821887C5E0001C286 /* CustomView.m */; };
+		949B337D57B683F30E22AC91 /* libPods-BatchFilterProcess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 048FA1482C230FA1D783607C /* libPods-BatchFilterProcess.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		048FA1482C230FA1D783607C /* libPods-BatchFilterProcess.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BatchFilterProcess.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1778B152F5D28870FCD3ACDC /* Pods-BatchFilterProcess.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BatchFilterProcess.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BatchFilterProcess/Pods-BatchFilterProcess.debug.xcconfig"; sourceTree = "<group>"; };
+		2AAC709EDF8A2119B0FA8108 /* Pods-BatchFilterProcess.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BatchFilterProcess.release.xcconfig"; path = "Pods/Target Support Files/Pods-BatchFilterProcess/Pods-BatchFilterProcess.release.xcconfig"; sourceTree = "<group>"; };
 		35FF28F021887B000001C286 /* BatchFilterProcess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BatchFilterProcess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35FF28F321887B000001C286 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		35FF28F421887B000001C286 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -35,17 +39,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				949B337D57B683F30E22AC91 /* libPods-BatchFilterProcess.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28A4972E83B1BCC3187E898F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1778B152F5D28870FCD3ACDC /* Pods-BatchFilterProcess.debug.xcconfig */,
+				2AAC709EDF8A2119B0FA8108 /* Pods-BatchFilterProcess.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		35FF28E721887B000001C286 = {
 			isa = PBXGroup;
 			children = (
 				35FF28F221887B000001C286 /* BatchFilterProcess */,
 				35FF28F121887B000001C286 /* Products */,
+				28A4972E83B1BCC3187E898F /* Pods */,
+				5EC58CDDB756C0884FAFBCE6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +91,14 @@
 			path = BatchFilterProcess;
 			sourceTree = "<group>";
 		};
+		5EC58CDDB756C0884FAFBCE6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				048FA1482C230FA1D783607C /* libPods-BatchFilterProcess.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,9 +106,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35FF290421887B020001C286 /* Build configuration list for PBXNativeTarget "BatchFilterProcess" */;
 			buildPhases = (
+				B74B682CA78A73219F918FC4 /* [CP] Check Pods Manifest.lock */,
 				35FF28EC21887B000001C286 /* Sources */,
 				35FF28ED21887B000001C286 /* Frameworks */,
 				35FF28EE21887B000001C286 /* Resources */,
+				3429F1E9F7C06E52A5E49A6F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -138,6 +164,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3429F1E9F7C06E52A5E49A6F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BatchFilterProcess/Pods-BatchFilterProcess-resources.sh",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_1.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_2.png",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_amatorka.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_miss_etikate.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_1.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_2.png",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BatchFilterProcess/Pods-BatchFilterProcess-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B74B682CA78A73219F918FC4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BatchFilterProcess-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		35FF28EC21887B000001C286 /* Sources */ = {
@@ -278,16 +351,14 @@
 		};
 		35FF290521887B020001C286 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1778B152F5D28870FCD3ACDC /* Pods-BatchFilterProcess.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BatchFilterProcess/BatchFilterProcess.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = BatchFilterProcess/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LY.BatchFilterProcess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -295,16 +366,14 @@
 		};
 		35FF290621887B020001C286 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AAC709EDF8A2119B0FA8108 /* Pods-BatchFilterProcess.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BatchFilterProcess/BatchFilterProcess.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = BatchFilterProcess/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LY.BatchFilterProcess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
