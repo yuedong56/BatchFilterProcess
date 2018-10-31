@@ -742,7 +742,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rYL-j5-oh8">
                                 <rect key="frame" x="-2" y="205" width="484" height="25"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="拖入滤镜图到绿色区域" id="3kQ-q6-1Dn">
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="拖入滤镜基准图（lookup）到绿色区域" id="3kQ-q6-1Dn">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

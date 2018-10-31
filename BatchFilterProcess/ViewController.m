@@ -18,7 +18,7 @@
 @interface ViewController () <LookupCusomViewDelegate, PicCustomViewDelegate>
 {
     NSArray *picUrls;
-    NSImageView *imageview;
+    NSImageView *tempImageView;
 }
 @property (strong) LookupCustomView *lookupView;
 @property (weak) IBOutlet NSTextField *addFilterLabel;
@@ -42,6 +42,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    tempImageView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)];
+    [self.view addSubview:tempImageView];
 
     self.view.wantsLayer = YES;
     self.view.layer.backgroundColor = [[NSColor whiteColor] CGColor];
@@ -77,12 +80,16 @@
 {
     if (![self.addFilterLabel.stringValue hasPrefix:@"/User"]) {
         NSAlert *alert = [[NSAlert alloc] init];
-        alert.messageText = @"没找到滤镜基准图";
-        alert.informativeText = @"请先拖入滤镜基准图";
+        alert.messageText = @"没找到滤镜基准图（lookup）";
+        alert.informativeText = @"请先拖入滤镜基准图（lookup）";
         [alert addButtonWithTitle:@"OK"];
         [alert runModal];
         return;
     }
+    
+    [self.lookupPic removeAllTargets];
+    [self.lookupPic addTarget:self.lookupFilter atTextureLocation:1];
+    [self.lookupPic processImage];
     
     GPUImagePicture *targetPicture = [[GPUImagePicture alloc] initWithImage:[NSImage imageNamed:@"123.jpg"]];
     [targetPicture addTarget:self.lookupFilter];
@@ -91,6 +98,7 @@
     [targetPicture processImage];
     NSImage *resultImage = [self.lookupFilter imageFromCurrentFramebuffer];
     
+    //tempImageView.image = resultImage;
     //图片写入文件
     NSData *imageData = [resultImage TIFFRepresentation];
     NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:imageData];
@@ -111,8 +119,7 @@
     
     self.lookupFilter = [[GPUImageLookupFilter alloc] init];
     self.lookupPic = [[GPUImagePicture alloc] initWithImage:[[NSImage alloc] initWithContentsOfFile:url] ];
-    [self.lookupPic addTarget:self.lookupFilter atTextureLocation:1];
-    [self.lookupPic processImage];
+    
 }
 
 #pragma mark - PicCustomViewDelegate
