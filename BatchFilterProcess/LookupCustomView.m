@@ -49,6 +49,10 @@
 
 - (void)draggingEnded:(id<NSDraggingInfo>)sender
 {
+    if (!isEnter) {
+        return;
+    }
+
     NSArray *allFileUrls = [[sender draggingPasteboard] propertyListForType:NSFilenamesPboardType];
     NSArray *array = [allFileUrls filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"pathExtension.lowercaseString IN %@", [self extensions]]];
 

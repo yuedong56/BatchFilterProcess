@@ -75,11 +75,15 @@
 #pragma mark - Buttons Action
 - (IBAction)startButtonAction:(id)sender
 {
-    self.lookupFilter = [[GPUImageLookupFilter alloc] init];
-    self.lookupPic = [[GPUImagePicture alloc] initWithImage:[NSImage imageNamed:@"clean"]];
-    [self.lookupPic addTarget:self.lookupFilter atTextureLocation:1];
-    [self.lookupPic processImage];
-
+    if (![self.addFilterLabel.stringValue hasPrefix:@"/User"]) {
+        NSAlert *alert = [[NSAlert alloc] init];
+        alert.messageText = @"没找到滤镜基准图";
+        alert.informativeText = @"请先拖入滤镜基准图";
+        [alert addButtonWithTitle:@"OK"];
+        [alert runModal];
+        return;
+    }
+    
     GPUImagePicture *targetPicture = [[GPUImagePicture alloc] initWithImage:[NSImage imageNamed:@"123.jpg"]];
     [targetPicture addTarget:self.lookupFilter];
    
@@ -104,6 +108,11 @@
 - (void)lookupCustomViewDidDragEnd:(LookupCustomView *)customView withFileUrl:(NSString *)url;
 {
     self.addFilterLabel.stringValue = url;
+    
+    self.lookupFilter = [[GPUImageLookupFilter alloc] init];
+    self.lookupPic = [[GPUImagePicture alloc] initWithImage:[[NSImage alloc] initWithContentsOfFile:url] ];
+    [self.lookupPic addTarget:self.lookupFilter atTextureLocation:1];
+    [self.lookupPic processImage];
 }
 
 #pragma mark - PicCustomViewDelegate
