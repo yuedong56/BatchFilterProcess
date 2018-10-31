@@ -710,6 +710,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rYL-j5-oh8">
+                                <rect key="frame" x="-2" y="205" width="484" height="25"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="拖入滤镜基准图（lookup）到绿色区域" id="3kQ-q6-1Dn">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </textFieldCell>
+                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xsT-Fe-u3J">
                                 <rect key="frame" x="-2" y="122" width="484" height="25"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -731,27 +740,23 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbH-Ef-R6f">
-                                <rect key="frame" x="6" y="48" width="468" height="22"/>
+                                <rect key="frame" x="35" y="48" width="439" height="22"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="message" id="n4Z-DW-WQU">
+                                <textFieldCell key="cell" lineBreakMode="clipping" id="n4Z-DW-WQU">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rYL-j5-oh8">
-                                <rect key="frame" x="-2" y="205" width="484" height="25"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="拖入滤镜基准图（lookup）到绿色区域" id="3kQ-q6-1Dn">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </textFieldCell>
-                            </textField>
+                            <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="VzT-Im-4Y0">
+                                <rect key="frame" x="12" y="53" width="16" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </progressIndicator>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="addFilterLabel" destination="rYL-j5-oh8" id="dxz-Yl-7sH"/>
+                        <outlet property="hud" destination="VzT-Im-4Y0" id="034-4L-jVG"/>
                         <outlet property="messageLabel" destination="tbH-Ef-R6f" id="NbL-32-uwa"/>
                         <outlet property="picsLabel" destination="xsT-Fe-u3J" id="R6O-TB-R0M"/>
                     </connections>

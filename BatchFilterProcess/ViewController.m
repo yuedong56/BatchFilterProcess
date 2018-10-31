@@ -27,6 +27,7 @@
 @property (weak) IBOutlet NSTextField *picsLabel;
 
 @property (weak) IBOutlet NSTextField *messageLabel;
+@property (weak) IBOutlet NSProgressIndicator *hud;
 
 @property (strong) GPUImageLookupFilter *lookupFilter;
 @property (strong) GPUImagePicture *lookupPic;
@@ -87,29 +88,67 @@
         return;
     }
     
-    [self.lookupPic removeAllTargets];
-    [self.lookupPic addTarget:self.lookupFilter atTextureLocation:1];
-    [self.lookupPic processImage];
+    self.hud.hidden = NO;
+    [self.hud startAnimation:nil];
     
-    GPUImagePicture *targetPicture = [[GPUImagePicture alloc] initWithImage:[NSImage imageNamed:@"123.jpg"]];
-    [targetPicture addTarget:self.lookupFilter];
-   
-    [self.lookupFilter useNextFrameForImageCapture];
-    [targetPicture processImage];
-    NSImage *resultImage = [self.lookupFilter imageFromCurrentFramebuffer];
-    
-    //tempImageView.image = resultImage;
-    //图片写入文件
-    NSData *imageData = [resultImage TIFFRepresentation];
-    NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:imageData];
-
-    NSNumber *quality = @(1);
-    NSDictionary *imageProps = [NSDictionary dictionaryWithObject:quality forKey:NSImageCompressionFactor];
-    imageData = [imageRep representationUsingType:NSJPEGFileType properties:imageProps];
-
-    //写文件
-    BOOL isSuccess = [imageData writeToFile:@"/Users/yuedongkui/Desktop/123.png" atomically:YES];
-    NSLog(@"isSuccess ---- %d", isSuccess);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self->picUrls enumerateObjectsUsingBlock:^(NSString *picUrl, NSUInteger idx, BOOL *stop) {
+            [self.lookupPic removeAllTargets];
+            [self.lookupPic addTarget:self.lookupFilter atTextureLocation:1];
+            [self.lookupPic processImage];
+            
+            GPUImagePicture *targetPicture = [[GPUImagePicture alloc] initWithImage:[[NSImage alloc] initWithContentsOfFile:picUrl]];
+            [targetPicture addTarget:self.lookupFilter];
+            
+            [self.lookupFilter useNextFrameForImageCapture];
+            [targetPicture processImage];
+            NSImage *resultImage = [self.lookupFilter imageFromCurrentFramebuffer];
+            
+            //tempImageView.image = resultImage;
+            //图片写入文件
+            NSData *imageData = [resultImage TIFFRepresentation];
+            NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:imageData];
+            
+            NSNumber *quality = @(1);
+            NSDictionary *imageProps = [NSDictionary dictionaryWithObject:quality forKey:NSImageCompressionFactor];
+            imageData = [imageRep representationUsingType:NSJPEGFileType properties:imageProps];
+            
+            NSString *dirPath = [NSString stringWithFormat:@"%@/处理结果", [picUrl stringByDeletingLastPathComponent]];
+            if (idx == 0 && (![[NSFileManager defaultManager] fileExistsAtPath:dirPath])) {
+                //在目录下创建个文件夹
+                BOOL isCreatSuccess = [[NSFileManager defaultManager] createDirectoryAtPath:dirPath withIntermediateDirectories:YES attributes:nil error:nil];
+                NSLog(@"创建文件夹是否成功 = %d", isCreatSuccess);
+            }
+            //写文件
+            BOOL isSuccess = [imageData writeToFile:[NSString stringWithFormat:@"%@/%@", dirPath, picUrl.lastPathComponent]
+                                         atomically:YES];
+            NSLog(@"isSuccess ---- %d", isSuccess);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSMutableArray *errorImageNames = [NSMutableArray arrayWithCapacity:0];
+                if (isSuccess) {
+                    self.messageLabel.stringValue = [NSString stringWithFormat:@"第%ld张图片处理结束 (%@)", idx+1, picUrl.lastPathComponent];
+                } else {
+                    self.messageLabel.stringValue = [NSString stringWithFormat:@"⚠️ 处理失败 (%@)", picUrl.lastPathComponent];
+                    [errorImageNames addObject:picUrl.lastPathComponent];
+                }
+                if (idx == self->picUrls.count-1)
+                {
+                    [self.hud stopAnimation:nil];
+                    self.hud.hidden = YES;
+                    
+                    if (errorImageNames.count == 0) {
+                        self.messageLabel.stringValue = @"✅ 处理完毕，未发现异常";
+                    } else {
+                        NSMutableString *errorimg = [NSMutableString string];
+                        for (NSString *imageName in errorImageNames) {
+                            [errorimg appendString:imageName];
+                        }
+                        self.messageLabel.stringValue = [NSString stringWithFormat:@"处理完毕，发现 %ld 处异常, 分别是: %@", errorImageNames.count, errorimg];
+                    }
+                }
+            });
+        }];
+    });
 }
 
 #pragma mark - CusomViewDelegate
@@ -119,13 +158,13 @@
     
     self.lookupFilter = [[GPUImageLookupFilter alloc] init];
     self.lookupPic = [[GPUImagePicture alloc] initWithImage:[[NSImage alloc] initWithContentsOfFile:url] ];
-    
 }
 
 #pragma mark - PicCustomViewDelegate
 - (void)picCustomViewDidDragEnd:(PicCustomView *)customView withFileUrls:(NSArray *)urls
 {
     self.picsLabel.stringValue = [NSString stringWithFormat:@"已添加 %ld 张图片", urls.count];
+    picUrls = urls;
 }
 
 
