@@ -14,8 +14,6 @@
 		35FF290021887B020001C286 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FF28FF21887B020001C286 /* main.m */; };
 		35FF290921887C5E0001C286 /* LookupCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FF290821887C5E0001C286 /* LookupCustomView.m */; };
 		35FF290C218957840001C286 /* PicCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FF290B218957840001C286 /* PicCustomView.m */; };
-		35FF290E21895C3B0001C286 /* clean.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FF290D21895C3B0001C286 /* clean.png */; };
-		35FF291021895C490001C286 /* 123.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 35FF290F21895C490001C286 /* 123.jpg */; };
 		949B337D57B683F30E22AC91 /* libPods-BatchFilterProcess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 048FA1482C230FA1D783607C /* libPods-BatchFilterProcess.a */; };
 /* End PBXBuildFile section */
 
@@ -23,7 +21,7 @@
 		048FA1482C230FA1D783607C /* libPods-BatchFilterProcess.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BatchFilterProcess.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1778B152F5D28870FCD3ACDC /* Pods-BatchFilterProcess.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BatchFilterProcess.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BatchFilterProcess/Pods-BatchFilterProcess.debug.xcconfig"; sourceTree = "<group>"; };
 		2AAC709EDF8A2119B0FA8108 /* Pods-BatchFilterProcess.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BatchFilterProcess.release.xcconfig"; path = "Pods/Target Support Files/Pods-BatchFilterProcess/Pods-BatchFilterProcess.release.xcconfig"; sourceTree = "<group>"; };
-		35FF28F021887B000001C286 /* BatchFilterProcess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BatchFilterProcess.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		35FF28F021887B000001C286 /* B612滤镜批处理.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "B612滤镜批处理.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35FF28F321887B000001C286 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		35FF28F421887B000001C286 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		35FF28F621887B000001C286 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -37,8 +35,6 @@
 		35FF290821887C5E0001C286 /* LookupCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LookupCustomView.m; sourceTree = "<group>"; };
 		35FF290A218957840001C286 /* PicCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicCustomView.h; sourceTree = "<group>"; };
 		35FF290B218957840001C286 /* PicCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicCustomView.m; sourceTree = "<group>"; };
-		35FF290D21895C3B0001C286 /* clean.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clean.png; sourceTree = "<group>"; };
-		35FF290F21895C490001C286 /* 123.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 123.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +71,7 @@
 		35FF28F121887B000001C286 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				35FF28F021887B000001C286 /* BatchFilterProcess.app */,
+				35FF28F021887B000001C286 /* B612滤镜批处理.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -91,8 +87,6 @@
 				35FF290821887C5E0001C286 /* LookupCustomView.m */,
 				35FF290A218957840001C286 /* PicCustomView.h */,
 				35FF290B218957840001C286 /* PicCustomView.m */,
-				35FF290D21895C3B0001C286 /* clean.png */,
-				35FF290F21895C490001C286 /* 123.jpg */,
 				35FF28F921887B020001C286 /* Assets.xcassets */,
 				35FF28FB21887B020001C286 /* Main.storyboard */,
 				35FF28FE21887B020001C286 /* Info.plist */,
@@ -129,7 +123,7 @@
 			);
 			name = BatchFilterProcess;
 			productName = BatchFilterProcess;
-			productReference = 35FF28F021887B000001C286 /* BatchFilterProcess.app */;
+			productReference = 35FF28F021887B000001C286 /* B612滤镜批处理.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -174,8 +168,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35FF291021895C490001C286 /* 123.jpg in Resources */,
-				35FF290E21895C3B0001C286 /* clean.png in Resources */,
 				35FF28FA21887B020001C286 /* Assets.xcassets in Resources */,
 				35FF28FD21887B020001C286 /* Main.storyboard in Resources */,
 			);
@@ -382,7 +374,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = LY.BatchFilterProcess;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "B612滤镜批处理";
 			};
 			name = Debug;
 		};
@@ -400,7 +392,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = LY.BatchFilterProcess;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "B612滤镜批处理";
 			};
 			name = Release;
 		};
