@@ -12,7 +12,10 @@
 		35FF28FA21887B020001C286 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35FF28F921887B020001C286 /* Assets.xcassets */; };
 		35FF28FD21887B020001C286 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35FF28FB21887B020001C286 /* Main.storyboard */; };
 		35FF290021887B020001C286 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FF28FF21887B020001C286 /* main.m */; };
-		35FF290921887C5E0001C286 /* CustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FF290821887C5E0001C286 /* CustomView.m */; };
+		35FF290921887C5E0001C286 /* LookupCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FF290821887C5E0001C286 /* LookupCustomView.m */; };
+		35FF290C218957840001C286 /* PicCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FF290B218957840001C286 /* PicCustomView.m */; };
+		35FF290E21895C3B0001C286 /* clean.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FF290D21895C3B0001C286 /* clean.png */; };
+		35FF291021895C490001C286 /* 123.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 35FF290F21895C490001C286 /* 123.jpg */; };
 		949B337D57B683F30E22AC91 /* libPods-BatchFilterProcess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 048FA1482C230FA1D783607C /* libPods-BatchFilterProcess.a */; };
 /* End PBXBuildFile section */
 
@@ -30,8 +33,12 @@
 		35FF28FE21887B020001C286 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35FF28FF21887B020001C286 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		35FF290121887B020001C286 /* BatchFilterProcess.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BatchFilterProcess.entitlements; sourceTree = "<group>"; };
-		35FF290721887C5E0001C286 /* CustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomView.h; sourceTree = "<group>"; };
-		35FF290821887C5E0001C286 /* CustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomView.m; sourceTree = "<group>"; };
+		35FF290721887C5E0001C286 /* LookupCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LookupCustomView.h; sourceTree = "<group>"; };
+		35FF290821887C5E0001C286 /* LookupCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LookupCustomView.m; sourceTree = "<group>"; };
+		35FF290A218957840001C286 /* PicCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicCustomView.h; sourceTree = "<group>"; };
+		35FF290B218957840001C286 /* PicCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicCustomView.m; sourceTree = "<group>"; };
+		35FF290D21895C3B0001C286 /* clean.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clean.png; sourceTree = "<group>"; };
+		35FF290F21895C490001C286 /* 123.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 123.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +87,12 @@
 				35FF28F421887B000001C286 /* AppDelegate.m */,
 				35FF28F621887B000001C286 /* ViewController.h */,
 				35FF28F721887B000001C286 /* ViewController.m */,
-				35FF290721887C5E0001C286 /* CustomView.h */,
-				35FF290821887C5E0001C286 /* CustomView.m */,
+				35FF290721887C5E0001C286 /* LookupCustomView.h */,
+				35FF290821887C5E0001C286 /* LookupCustomView.m */,
+				35FF290A218957840001C286 /* PicCustomView.h */,
+				35FF290B218957840001C286 /* PicCustomView.m */,
+				35FF290D21895C3B0001C286 /* clean.png */,
+				35FF290F21895C490001C286 /* 123.jpg */,
 				35FF28F921887B020001C286 /* Assets.xcassets */,
 				35FF28FB21887B020001C286 /* Main.storyboard */,
 				35FF28FE21887B020001C286 /* Info.plist */,
@@ -132,6 +143,11 @@
 				TargetAttributes = {
 					35FF28EF21887B000001C286 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -158,6 +174,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35FF291021895C490001C286 /* 123.jpg in Resources */,
+				35FF290E21895C3B0001C286 /* clean.png in Resources */,
 				35FF28FA21887B020001C286 /* Assets.xcassets in Resources */,
 				35FF28FD21887B020001C286 /* Main.storyboard in Resources */,
 			);
@@ -218,9 +236,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				35FF28F821887B000001C286 /* ViewController.m in Sources */,
-				35FF290921887C5E0001C286 /* CustomView.m in Sources */,
+				35FF290921887C5E0001C286 /* LookupCustomView.m in Sources */,
 				35FF290021887B020001C286 /* main.m in Sources */,
 				35FF28F521887B000001C286 /* AppDelegate.m in Sources */,
+				35FF290C218957840001C286 /* PicCustomView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,11 +373,14 @@
 			baseConfigurationReference = 1778B152F5D28870FCD3ACDC /* Pods-BatchFilterProcess.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = BatchFilterProcess/BatchFilterProcess.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = BatchFilterProcess/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = LY.BatchFilterProcess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -369,11 +391,14 @@
 			baseConfigurationReference = 2AAC709EDF8A2119B0FA8108 /* Pods-BatchFilterProcess.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = BatchFilterProcess/BatchFilterProcess.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = BatchFilterProcess/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = LY.BatchFilterProcess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
