@@ -90,6 +90,7 @@
     
     self.hud.hidden = NO;
     [self.hud startAnimation:nil];
+    self.messageLabel.stringValue = @"准备处理...";
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self->picUrls enumerateObjectsUsingBlock:^(NSString *picUrl, NSUInteger idx, BOOL *stop) {
@@ -145,6 +146,9 @@
                         }
                         self.messageLabel.stringValue = [NSString stringWithFormat:@"处理完毕，发现 %ld 处异常, 分别是: %@", errorImageNames.count, errorimg];
                     }
+                    
+                    //打开处理结果目录
+                    [self runCmdPath:@"/usr/bin/open" arguments:@[dirPath]];
                 }
             });
         }];
@@ -167,5 +171,30 @@
     picUrls = urls;
 }
 
+#pragma mark -
+- (NSString *)runCmdPath:(NSString *)path arguments:(NSArray *)args
+{
+    NSTask *task = [[NSTask alloc] init];
+    
+    [task setLaunchPath:path];
+    [task setArguments:args];
+    
+    NSPipe *pipe = [NSPipe pipe];
+    [task setStandardInput:[NSPipe pipe]];
+    [task setStandardOutput: pipe];
+    
+    NSFileHandle *file = [pipe fileHandleForReading];
+    
+    [task launch];
+    [task waitUntilExit];
+    
+    NSData *data;
+    data = [file readDataToEndOfFile];
+    
+    NSString *string;
+    string = [[NSString alloc] initWithData:data
+                                   encoding:NSUTF8StringEncoding];
+    return string;
+}
 
 @end
