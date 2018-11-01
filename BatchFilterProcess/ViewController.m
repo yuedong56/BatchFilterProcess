@@ -32,6 +32,7 @@
 @property (strong) GPUImageLookupFilter *lookupFilter;
 @property (strong) GPUImagePicture *lookupPic;
 
+@property (weak) IBOutlet NSTextField *powerLabel;
 @end
 
 
@@ -92,6 +93,8 @@
     [self.hud startAnimation:nil];
     self.messageLabel.stringValue = @"准备处理...";
     
+    self.lookupFilter.intensity = self.powerLabel.floatValue/100.0;
+
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self->picUrls enumerateObjectsUsingBlock:^(NSString *picUrl, NSUInteger idx, BOOL *stop) {
             [self.lookupPic removeAllTargets];
